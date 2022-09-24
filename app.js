@@ -118,4 +118,40 @@ let currentItem = 0;
 window.addEventListener("DOMContentLoaded", function() {
     const item = leaders[currentItem];
     img.src = item.img;
-})
+    author.textContent = item.name;
+    job.textContent = item.job;
+    info.textContent = item.text;
+});
+
+// show person based on item
+function showPerson(person){
+    const item = leaders[person];
+    img.src = item.img;
+    author.textContent = item.name;
+    job.textContent = item.job;
+    info.textContent = item.text;
+  }
+
+// show next person
+nextBtn.addEventListener("click", function () {
+    currentItem++;
+    if (currentItem > leaders.length - 1) {
+      currentItem = 0;
+    }
+    showPerson(currentItem);
+  });
+  // show prev person
+prevBtn.addEventListener("click", function () {
+    currentItem--;
+    if (currentItem < 0) {
+      currentItem = leaders.length - 1;
+    }
+    showPerson(currentItem);
+  });
+  // show random person
+  randomBtn.addEventListener("click", function () {
+    console.log("hello");
+  
+    currentItem = Math.floor(Math.random() * leaders.length);
+    showPerson(currentItem);
+  });
